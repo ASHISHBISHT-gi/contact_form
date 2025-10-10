@@ -1,0 +1,60 @@
+/* Mobile */
+@media screen and (max-width: 73.0625em) {
+
+    body,
+    html {
+        height: 100dvh;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        box-sizing: border-box;
+        padding: 2rem 1rem;
+    }
+    main{
+        outline:1px solid red;
+        padding:1rem;
+    }
+    main *{
+        box-sizing:border-box;
+    }
+
+    h1{
+        margin-top:0;
+        margin-bottom:1rem;
+    }
+
+    label:after {
+        content: " *";
+        /* aspect-ratio:1;
+  /* display:inline-block; */
+        font-size: 0.8rem;
+        /* transform:scale(10); */
+        color: green;
+    }
+
+    input,textarea{
+        display:block;
+    }
+
+    .com>input,#email{
+        height:3rem;
+        width:100%;
+        /* box-sizing:border-box; */
+    }
+    textarea{
+        width:100%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap:1.5rem;
+    }
+
+}
+
+/* Mobile */
+@media screen and (min-width: 73.0625em) {}
