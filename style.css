@@ -26,7 +26,13 @@
         margin-bottom:1rem;
     }
 
-    label:after {
+    /* label{
+        margin-bottom:1rem;
+    } */
+    input:not([type="radio"]),textarea{
+        margin-top:0.8rem;
+    }
+    label:not(.choose):after {
         content: " *";
         /* aspect-ratio:1;
   /* display:inline-block; */
@@ -53,7 +59,36 @@
         flex-direction: column;
         gap:1.5rem;
     }
-
+    h3{
+        margin:0;
+    }
+    .query{
+        display:flex;
+        flex-direction: column;
+        gap:0.8rem;
+    }
+    #query{
+        display: flex;
+        flex-direction:column;
+        gap:1rem;
+    }
+    .query>div{
+        /* border:1px solid red; */
+        display:flex;
+        flex-direction: column;
+    }
+    #ge,#sr{
+        display:inline;
+    }
+    #query>div{
+        padding-left:1rem;
+        border:1px solid black;
+        height:2.5rem;
+        display:flex;
+        align-items:center;
+        gap:0.5rem;
+        border-radius:0.5rem;
+    }
 }
 
 /* Mobile */
