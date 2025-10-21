@@ -32,15 +32,21 @@
         <div class="com">
           <label for="firstname">First Name</label>
           <input type="text" />
+          <!-- error -->
+          <p>This field is required</p>
         </div>
         <div class="com">
           <label for="lastname">Last Name</label>
           <input type="text" />
+          <!-- error -->
+          <p>This field is required</p>
         </div>
       </section>
       <section>
         <label for="email">Email Address</label>
         <input type="email" id="email" />
+        <!-- error -->
+          <p>Please enter a valid email address</p>
       </section>
       <section class="query">
         <legend>Query type</legend>
@@ -55,17 +61,23 @@
             <input name="query" id="sr" type="radio" value="support_request" />
             <label class="choose" for="sr">Support Request</label>
           </div>
+          <!-- error -->
+          <p>Please select a query type</p>
         </div>
       </section>
       <section>
         <label for="message">Message</label>
         <textarea rows="8" name="message" id="message"></textarea>
+        <!-- error -->
+          <p>This field is required</p>
       </section>
       <section>
-        <input type="checkbox" id="consent" name="consent" /><label for="consent">
-          I hereby consent to being contacted by the team</label>
-        <button type="submit">Submit</button>
+        <div class="check">
+          <input type="checkbox" id="consent" name="consent" />
+          <label for="consent">I hereby consent to being contacted by the team</label>
+        </div>
       </section>
+        <button type="submit">Submit</button>
     </form>
   </main>
 
