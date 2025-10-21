@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 /* Mobile */
 @media screen and (max-width: 73.0625em) {
 
     body,
     html {
-        height: 100dvh;
+        /* height: 100dvh; */
         width: 100vw;
         padding: 0;
         margin: 0;
@@ -13,10 +15,12 @@
         box-sizing: border-box;
         padding: 2rem 1rem;
         background-color:hsl(148, 38%, 91%);
+        font-family: "Karla", sans-serif;
+        font-weight:400;
     }
 
     main {
-        outline: 1px solid red;
+        /* outline: 1px solid red; */
         padding: 1rem;
         border-radius:1rem;
         background-color:hsl(0, 0%, 100%);
@@ -31,19 +35,20 @@
         margin-bottom: 1rem;
     }
 
-    /* label{
-        margin-bottom:1rem;
-    } */
+    label{
+        /* margin-bottom:1rem; */
+        font-size:16px;
+    }
     input:not([type="radio"]),
     textarea {
         margin-top: 0.8rem;
     }
 
-    label:not(.choose):after {
+    label:not(.choose):after,legend:after {
         content: " *";
         /* aspect-ratio:1;
   /* display:inline-block; */
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         /* transform:scale(10); */
         color: green;
     }
@@ -53,8 +58,13 @@
         display: block;
         border-radius: 0.5rem;
         border-style: solid;
+        border-color:rgb(118, 118, 118);
     }
 
+    input:focus,textarea:focus{
+        /* border-color: rgb(118, 118, 118); */
+        outline:none;
+    }
     .com>input,
     #email {
         height: 3rem;
@@ -64,9 +74,10 @@
 
     textarea {
         width: 100%;
+        border:1.6px solid rgb(118, 118, 118);
     }
 
-    form {
+    form,.name{
         display: flex;
         flex-direction: column;
         /* gap: 1.5rem; */
@@ -102,7 +113,7 @@
 
     #query>div {
         padding-left: 1rem;
-        border: 1px solid black;
+        border:1.6px solid rgb(118, 118, 118);
         height: 3rem;
         display: flex;
         align-items: center;
@@ -115,11 +126,15 @@
         aspect-ratio: 1;
     }
     /* error p */
+    .name>.com:first-of-type>p{
+        margin:0.6rem 0 1rem 0 ;
+    }
     p{
         font-size:0.9rem;
-        margin:0.6rem 0 1rem 0 ;
+        margin:0.6rem 0 0 0 ;
         color:hsl(0, 66%, 54%);
     }
+
     .check{
         display:flex;
         flex-direction: row;
@@ -134,7 +149,10 @@
     button{
         height:3rem;
         border-radius:0.5rem;
-        border-style:solid;
+        border-style:none;
+        background-color:hsl(169, 82%, 27%);
+        color:hsl(148, 38%, 91%);
+        font-weight:700;
     }
 }
 
