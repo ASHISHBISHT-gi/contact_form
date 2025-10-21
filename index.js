@@ -6,7 +6,7 @@ p.forEach(elements=>{
     elements.style.display="none";
 })
 inputs.forEach(input => {
-    console.log("input's are ",input)
+    console.log({input})
 });
 
 button.addEventListener('click',(e)=>{
