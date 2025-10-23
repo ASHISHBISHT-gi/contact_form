@@ -13,7 +13,7 @@ p.forEach(elements=>{
 inputs.forEach(input => {
     console.log({input})
 });
-let counter=[0,0,0];
+let counter=[false,false,false,false];
 button.addEventListener('click',(e)=>{
     e.preventDefault();
     data.forEach((set,i)=>{
@@ -23,24 +23,26 @@ button.addEventListener('click',(e)=>{
                 console.log(element);
                 console.log("index is",index);
                 // for first three inputs
-                if(element.value=="" && element.type!="radio"){
+                if(element.value=="" && element.type!="checkbox"){
                     console.log("index is ",index);
                     p_new[index].style.display="block";
                     console.log(p_new[index].style.display);
-                    console.log("hello from if array");
-                    counter[0]=counter[0]-1;
+                    console.log("hello from 1st if");
+                    counter[0]=false;
                 }else{
-                    counter[0]=counter[0]+1
+                    counter[0]=true;
                     p_new[index].style.display="none";
-                    console.log("hello from else");
+                    console.log("hello from 1st else");
                 }
                 // for checkbox
                 if(element.type=="checkbox" && element.checked==false){
                     p_new[3].style.display="block";
-                    counter[0]=counter[0]-1;
+                    counter[3]=false;
+                    console.log("hello from 2nd if");
                 }else{
-                    counter[0]=counter[0]+1
+                    counter[3]=true;
                     p_new[3].style.display="none";
+                    console.log("hello from 2nd else");
                 }
             })
         } 
@@ -48,18 +50,18 @@ button.addEventListener('click',(e)=>{
         if(i==1){
             if(set.value==""){
                 p_new[4].style.display="block";
-                counter[1]=counter[1]-1;
+                counter[1]=false;
             }else{
-                counter[1]=counter[1]+1
+                counter[1]=true;
                 p_new[4].style.display="none";
             }
         }else{
             // radio button validation logic
             if(set[0].checked || set[1].checked){
-                counter[2]=counter[2]+1;
+                counter[2]=true;
                 p_new[5].style.display="none";
             }else{
-                counter[2]=counter[2]-1;
+                counter[2]=false;
                 p_new[5].style.display="block";
             }
         }
@@ -72,7 +74,7 @@ button.addEventListener('click',(e)=>{
 
     )
     console.log("counter is",counter);
-    if(counter==9){
+    if(counter[0]==true && counter[1]==true && counter[2]==true){
         const form = document.querySelector('form');
         form.submit();
         console.log("form submitted successfuly");
