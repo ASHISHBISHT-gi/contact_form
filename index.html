@@ -8,6 +8,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
 
+
   <title>Frontend Mentor | Contact form</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -31,7 +32,7 @@
       <section class="name">
         <div class="com">
           <label for="firstname">First Name</label>
-          <input type="text" />
+          <input type="text" pattern="[A-Za-z]+"/>
           <!-- error -->
           <p>This field is required</p>
         </div>
@@ -42,7 +43,7 @@
           <p>This field is required</p>
         </div>
       </section>
-      <section>
+      <section class="email">
         <label for="email">Email Address</label>
         <input type="email" id="email" />
         <!-- error -->
@@ -65,7 +66,7 @@
           <p>Please select a query type</p>
         </div>
       </section>
-      <section>
+      <section class="msg">
         <label for="message">Message</label>
         <textarea rows="8" name="message" id="message"></textarea>
         <!-- error -->
