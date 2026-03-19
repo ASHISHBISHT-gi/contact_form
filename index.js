@@ -26,6 +26,7 @@ button.addEventListener('click',(e)=>{
                 if(element.value=="" && element.type!="checkbox"){
                     console.log("index is ",index);
                     p_new[index].style.display="block";
+                    element.style.border="2px solid hsl(0, 66%, 54%)"
                     console.log(p_new[index].style.display);
                     console.log("type from if is",element.type);
                     // console.log("hello from 1st if");
@@ -33,6 +34,7 @@ button.addEventListener('click',(e)=>{
                 }else{
                     if(element.type!="checkbox"){
                         counter[index]=true;
+                        element.style.border="2px solid hsl(0, 66%, 54%)"
                         console.log("type from else is",element.type);
                         p_new[index].style.display="none";
                         // console.log("hello from 1st else");
@@ -40,11 +42,13 @@ button.addEventListener('click',(e)=>{
                 }
                 // for checkbox
                 if(element.type=="checkbox" && element.checked==false){
+                    element.style.border="2px solid hsl(0, 66%, 54%)"
                     p_new[3].style.display="block";
                     counter[3]=false;
                     // console.log("hello from 2nd if");
                 }else{
                     counter[3]=true;
+                    
                     p_new[3].style.display="none";
                     // console.log("hello from 2nd else");
                 }
@@ -54,6 +58,7 @@ button.addEventListener('click',(e)=>{
         if(i==1){
             if(set.value==""){
                 p_new[4].style.display="block";
+                set.style.border="2px solid hsl(0, 66%, 54%)"
                 counter[4]=false;
             }else{
                 counter[4]=true;
@@ -67,6 +72,8 @@ button.addEventListener('click',(e)=>{
             }else{
                 counter[5]=false;
                 p_new[5].style.display="block";
+                // radio button div 
+                // element.style.border="2px solid hsl(0, 66%, 54%)"
             }
         }
         // if(element.type=="radio" && element.checked==false && counter==0){
