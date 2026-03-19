@@ -290,5 +290,13 @@
         flex-direction: column;
         gap:0.4rem;
     }
+    label:not(.choose):after,legend:after {
+        content: " *";
+        /* aspect-ratio:1;
+  /* display:inline-block; */
+        font-size: 0.9rem;
+        /* transform:scale(10); */
+        color: green;
+    }
 
 }
