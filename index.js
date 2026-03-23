@@ -1,95 +1,166 @@
-const button=document.querySelector("button");
-const inputs=document.querySelectorAll('input:not([type="radio"])');
-const data=[inputs,document.querySelector("textarea"),document.querySelectorAll('input[type="radio"]')]
+const text=document.getElementsByName("text");
+const email=document.getElementsByName("email")[0];
 const p=document.querySelectorAll("p");
-const p_new=[p[0],p[1],p[2],p[5],p[4],p[3]]
-p_new.forEach(element=>{
-    // console.log(element);
-})
-p.forEach(elements=>{
-    // console.log(elements);
-    elements.style.display="none";
-})
-inputs.forEach(input => {
-    // console.log({input})
-});
+const textarea=document.querySelector("textarea");
+const radio=document.getElementsByName("query");
+const form=document.querySelector("form");
+const check=document.getElementsByName("consent")[0];
+const success=document.getElementsByClassName("success")[0];
+const body=document.querySelector("body");
+console.log(text)
+let all=[text[0],text[1],email,radio,textarea,check]
 let counter=[false,false,false,false,false,false];
-button.addEventListener('click',(e)=>{
-    e.preventDefault();
-    data.forEach((set,i)=>{
-        // for first three inputs
-        if(set instanceof NodeList && i==0){
-            set.forEach((element,index)=>{
-                // console.log(element);
-                // console.log("index is",index);
-                // for first three inputs
-                if(element.value=="" && element.type!="checkbox"){
-                    console.log("index is ",index);
-                    p_new[index].style.display="block";
-                    element.style.border="2px solid hsl(0, 66%, 54%)"
-                    console.log(p_new[index].style.display);
-                    console.log("type from if is",element.type);
-                    // console.log("hello from 1st if");
-                    counter[index]=false;
-                }else{
-                    if(element.type!="checkbox"){
-                        counter[index]=true;
-                        element.style.border="2px solid hsl(0, 66%, 54%)"
-                        console.log("type from else is",element.type);
-                        p_new[index].style.display="none";
-                        // console.log("hello from 1st else");
-                    }
-                }
-                // for checkbox
-                if(element.type=="checkbox" && element.checked==false){
-                    element.style.border="2px solid hsl(0, 66%, 54%)"
-                    p_new[3].style.display="block";
-                    counter[3]=false;
-                    // console.log("hello from 2nd if");
-                }else{
-                    counter[3]=true;
-                    
-                    p_new[3].style.display="none";
-                    // console.log("hello from 2nd else");
-                }
-            })
-        } 
-        // textarea validation logic
-        if(i==1){
-            if(set.value==""){
-                p_new[4].style.display="block";
-                set.style.border="2px solid hsl(0, 66%, 54%)"
-                counter[4]=false;
-            }else{
-                counter[4]=true;
-                p_new[4].style.display="none";
-            }
-        }else{
-            // radio button validation logic
-            if(set[0].checked || set[1].checked){
-                counter[5]=true;
-                p_new[5].style.display="none";
-            }else{
-                counter[5]=false;
-                p_new[5].style.display="block";
-                // radio button div 
-                // element.style.border="2px solid hsl(0, 66%, 54%)"
-            }
-        }
-        // if(element.type=="radio" && element.checked==false && counter==0){
-        //             console.log("element.checked is",element.checked);
-        //             p_new[5].style.display="block";
-        //             counter=1;
-        //         }
-    }
 
-    )
-    console.log("counter is",counter);
-    if(counter[0]==true && counter[1]==true && counter[2]==true && counter[3]==true && counter[4]==true && counter[5]==true){
-        const form = document.querySelector('form');
-        form.submit();
-        console.log("form submitted successfuly");
+console.log("success is ",success);
+// error handling for input name and input email post typing
+
+function textvalidate(element,i){
+            if(element.value){
+                element.style.borderColor="hsl(186, 15%, 59%)";
+                counter[i]=true;
+                p[i].style.display="None";
+            }else{
+                element.style.borderColor="hsl(0, 66%, 54%)";
+                counter[i]=false;
+                p[i].style.display="block";
+            }
+}
+
+text.forEach((element,i)=>{
+        element.addEventListener('keyup',(e)=>{
+            textvalidate(element,i)
+        })    
+});
+
+// error handlilng for email
+function emailvalidate(element){
+    if(element.value){
+        element.style.borderColor="hsl(186, 15%, 59%)";
+        counter[2]=true;
+        p[2].style.display="None";
+    }else{
+        element.style.borderColor="hsl(0, 66%, 54%)";
+        counter[2]=false;
+        p[2].style.display="block";
     }
+}
+
+email.addEventListener('keyup',(e)=>{
+        emailvalidate(email);
+})
+email.addEventListener('focusout',(e)=>{
+    console.log("offFocus")
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(email.value && !emailRegex.test(email.value)){
+        email.style.borderColor="hsl(0, 66%, 54%)";
+        counter[2]=false;
+        p[2].style.display="block";
+    }
+})
+
+// error handling for radio inputs
+function radiovalidate(element,i){
+            if(element.checked){
+                p[3].style.display="none";
+                counter[3]=true;
+                if(i==0){
+                    element.parentNode.style.borderColor="hsl(169, 82%, 27%)";
+                    element.parentNode.style.background="hsl(186, 15%, 59%)";
+                    radio[1].parentNode.style.borderColor="hsl(187, 24%, 22%)";
+                    radio[1].parentNode.style.background="hsl(0, 0%, 100%)";
+                }else{
+                    element.parentNode.style.borderColor="hsl(169, 82%, 27%)";
+                    element.parentNode.style.background="hsl(186, 15%, 59%)";
+                    radio[0].parentNode.style.borderColor="hsl(187, 24%, 22%)";
+                    radio[0].parentNode.style.background="hsl(0, 0%, 100%)";
+                }
+            }else{
+                p[3].style.display="block";
+                counter[3]=false;
+            }
+}
+
+function radioreset(r1,r2){
+        r1.parentNode.style.borderColor="rgb(118, 118, 118)";
+        r1.parentNode.style.background="hsl(0, 0%, 100%)";
+        r2.parentNode.style.borderColor="rgb(118, 118, 118)";
+        r2.parentNode.style.background="hsl(0, 0%, 100%)";
 
 }
-)
+
+radio.forEach((element,i)=>{
+        element.addEventListener('click',(e)=>{
+            radiovalidate(element,i)
+        })
+})
+//  error handling for textarea
+function textareavalidate(element){
+    if(element.value){
+        counter[4]=true;
+        p[4].style.display="none";
+        element.style.borderColor="hsl(169, 82%, 27%)";
+
+    }else{
+        counter[4]=false;
+        element.style.borderColor="hsl(0, 66%, 54%)";
+        p[4].style.display="block";
+    }
+}
+
+textarea.addEventListener('keyup',(e)=>{
+        textareavalidate(textarea)
+})
+// error handling for checkbox
+function checkvalidate(element){
+    if(element.checked){
+        counter[5]=true;
+        p[5].style.display="none";
+    }else{
+        counter[5]=false;
+        p[5].style.display="block";
+    }
+}
+check.addEventListener('click',(e)=>{
+        checkvalidate(check);
+})
+
+let all1={
+    0:textvalidate,
+    1:textvalidate,
+    2:emailvalidate,
+    3:radiovalidate,
+    4:textareavalidate,
+    5:checkvalidate
+}
+
+//  remove success bar
+body.addEventListener('click',(e)=>{
+    success.style.display="none";
+})
+
+
+form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    if(counter[0]==true && counter[1]==true && counter[2]==true && counter[3]==true && counter[4]==true && counter[5]==true){
+        const form = document.querySelector('form');
+        counter.fill(false);
+        console.log("dfd")
+        success.style.display="flex";
+        console.log("form submitted successfuly");
+        radioreset(radio[0],radio[1]);
+        form.reset();
+    }else{
+        counter.forEach((element,i)=>{
+            if(!element){
+                if(i<=1 || i==3){
+                    all1[i](all[i],i);
+                }else{
+                    all1[i](all[i]);
+                }
+            }
+        })
+    }
+})   
+    
+
+

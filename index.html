@@ -27,25 +27,30 @@
 
 <body>
   <main class="container">
+    <!-- success box -->
+    <div class="success">
+      <div><img src="./assets/images/check-mark.png" alt="check-mark"><h4>Message Sent!</h4></div>
+      <section>Thanks for completing the form. we'll be in touch soon!</section>
+    </div>
     <h2>Contact Us</h2>
-    <form action="">
+    <form action="" >
       <section class="name">
         <div class="com">
           <label for="firstname">First Name</label>
-          <input type="text" pattern="[A-Za-z]+"/>
+          <input name="text" type="text" pattern="[A-Za-z]+" />
           <!-- error -->
           <p>This field is required</p>
         </div>
         <div class="com">
           <label for="lastname">Last Name</label>
-          <input type="text" />
+          <input name="text" type="text" pattern="[A-Za-z]+" />
           <!-- error -->
           <p>This field is required</p>
         </div>
       </section>
       <section class="email">
         <label for="email">Email Address</label>
-        <input type="email" id="email" />
+        <input name="email" type="email" id="email" />
         <!-- error -->
           <p>Please enter a valid email address</p>
       </section>
@@ -68,7 +73,7 @@
       </section>
       <section class="msg">
         <label for="message">Message</label>
-        <textarea rows="8" name="message" id="message"></textarea>
+        <textarea rows="4" name="message" id="message"></textarea>
         <!-- error -->
           <p>This field is required</p>
       </section>
