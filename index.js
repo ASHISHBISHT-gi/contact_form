@@ -6,6 +6,7 @@ const radio=document.getElementsByName("query");
 const form=document.querySelector("form");
 const check=document.getElementsByName("consent")[0];
 const success=document.getElementsByClassName("success")[0];
+const succ=document.getElementById("success");
 const body=document.querySelector("body");
 console.log(text)
 let all=[text[0],text[1],email,radio,textarea,check]
@@ -135,7 +136,7 @@ let all1={
 
 //  remove success bar
 body.addEventListener('click',(e)=>{
-    success.style.display="none";
+    succ.style.display="none";
 })
 
 
@@ -145,7 +146,9 @@ form.addEventListener('submit',(e)=>{
         const form = document.querySelector('form');
         counter.fill(false);
         console.log("dfd")
-        success.style.display="flex";
+        // success.style.display="flex";
+        succ.style.display="flex";
+
         console.log("form submitted successfuly");
         radioreset(radio[0],radio[1]);
         form.reset();
