@@ -17,11 +17,13 @@ console.log("success is ",success);
 
 function textvalidate(element,i){
             if(element.value){
-                element.style.borderColor="hsl(186, 15%, 59%)";
+                // element.style.borderColor="hsl(186, 15%, 59%)";
+                element.classList.remove("invalid");
                 counter[i]=true;
                 p[i].style.display="None";
             }else{
-                element.style.borderColor="hsl(0, 66%, 54%)";
+                element.classList.add("invalid");
+                // element.style.borderColor="hsl(0, 66%, 54%)";
                 counter[i]=false;
                 p[i].style.display="block";
             }
@@ -29,31 +31,38 @@ function textvalidate(element,i){
 
 text.forEach((element,i)=>{
         element.addEventListener('keyup',(e)=>{
-            textvalidate(element,i)
+            // console.log(e);
+            if(e.key!="Tab"){
+                textvalidate(element,i);
+            }
         })    
 });
 
 // error handlilng for email
 function emailvalidate(element){
     if(element.value){
-        element.style.borderColor="hsl(186, 15%, 59%)";
+        // element.style.borderColor="hsl(186, 15%, 59%)";
+        element.classList.remove("invalid");
         counter[2]=true;
         p[2].style.display="None";
     }else{
-        element.style.borderColor="hsl(0, 66%, 54%)";
+        element.classList.add("invalid");
+        // element.style.borderColor="hsl(0, 66%, 54%)";
         counter[2]=false;
         p[2].style.display="block";
     }
 }
 
 email.addEventListener('keyup',(e)=>{
+    if(e.key!="Tab"){
         emailvalidate(email);
+    }
 })
 email.addEventListener('focusout',(e)=>{
     console.log("offFocus")
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if(email.value && !emailRegex.test(email.value)){
-        email.style.borderColor="hsl(0, 66%, 54%)";
+        element.classList.add("invalid");
         counter[2]=false;
         p[2].style.display="block";
     }
@@ -67,12 +76,12 @@ function radiovalidate(element,i){
                 if(i==0){
                     element.parentNode.style.borderColor="hsl(169, 82%, 27%)";
                     element.parentNode.style.background="hsl(186, 15%, 59%)";
-                    radio[1].parentNode.style.borderColor="hsl(187, 24%, 22%)";
+                    radio[1].parentNode.style.borderColor="rgb(118, 118, 118)";
                     radio[1].parentNode.style.background="hsl(0, 0%, 100%)";
                 }else{
                     element.parentNode.style.borderColor="hsl(169, 82%, 27%)";
                     element.parentNode.style.background="hsl(186, 15%, 59%)";
-                    radio[0].parentNode.style.borderColor="hsl(187, 24%, 22%)";
+                    radio[0].parentNode.style.borderColor="rgb(118, 118, 118)";
                     radio[0].parentNode.style.background="hsl(0, 0%, 100%)";
                 }
             }else{
@@ -91,7 +100,9 @@ function radioreset(r1,r2){
 
 radio.forEach((element,i)=>{
         element.addEventListener('click',(e)=>{
-            radiovalidate(element,i)
+            if(e.key!="Tab"){
+                radiovalidate(element,i);
+            }
         })
 })
 //  error handling for textarea
@@ -99,7 +110,7 @@ function textareavalidate(element){
     if(element.value){
         counter[4]=true;
         p[4].style.display="none";
-        element.style.borderColor="hsl(169, 82%, 27%)";
+        element.style.borderColor="rgb(118, 118, 118)";
 
     }else{
         counter[4]=false;
@@ -109,7 +120,9 @@ function textareavalidate(element){
 }
 
 textarea.addEventListener('keyup',(e)=>{
-        textareavalidate(textarea)
+    if(e.key!="Tab"){
+        textareavalidate(textarea);
+    }
 })
 // error handling for checkbox
 function checkvalidate(element){
@@ -122,7 +135,9 @@ function checkvalidate(element){
     }
 }
 check.addEventListener('click',(e)=>{
+    if(e.key!="Tab"){
         checkvalidate(check);
+    }
 })
 
 let all1={
@@ -148,7 +163,7 @@ form.addEventListener('submit',(e)=>{
         console.log("dfd")
         // success.style.display="flex";
         succ.style.display="flex";
-
+        console.log("succ_display is ",succ.style.display);
         console.log("form submitted successfuly");
         radioreset(radio[0],radio[1]);
         form.reset();
