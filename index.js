@@ -58,11 +58,11 @@ email.addEventListener('keyup',(e)=>{
         emailvalidate(email);
     }
 })
-email.addEventListener('focusout',(e)=>{
+email.addEventListener('blur',(e)=>{
     console.log("offFocus")
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if(email.value && !emailRegex.test(email.value)){
-        element.classList.add("invalid");
+        email.classList.add("invalid");
         counter[2]=false;
         p[2].style.display="block";
     }

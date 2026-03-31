@@ -218,6 +218,14 @@
         margin:0;
         color:hsl(0, 0%, 100%);
     }
+    .check>input{
+        height:1rem;
+        width:1rem;
+    }
+    .query input{
+        height:1rem;
+        width:1rem;
+    }
 }
 
 /* Desktop */

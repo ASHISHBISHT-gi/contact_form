@@ -37,57 +37,57 @@
     <h2>Contact Us</h2>
     <form action="" novalidate>
       <section class="name">
-        <div class="com">
+        <div class="com" aria-live="polite">
           <label for="firstname">First Name</label>
           <input name="text" type="text" pattern="[A-Za-z]+" />
           <!-- error -->
           <p>This field is required</p>
         </div>
-        <div class="com">
+        <div class="com" aria-live="polite">
           <label for="lastname">Last Name</label>
           <input name="text" type="text" pattern="[A-Za-z]+" />
           <!-- error -->
           <p>This field is required</p>
         </div>
       </section>
-      <section class="email">
+      <section class="email" aria-live="polite">
         <label for="email">Email Address</label>
-        <input name="email" type="email" id="email" />
+        <input aria-label="enter email" name="email" type="email" id="email" />
         <!-- error -->
           <p>Please enter a valid email address</p>
       </section>
-      <section class="query">
+      <section class="query" aria-live="polite">
         <legend>Query type</legend>
         <div id="query">
           <!-- div1 -->
           <div>
-          <input name="query" id="ge" type="radio" value="general_request" />
+          <input aria-label="radio input general enquity" name="query" id="ge" type="radio" value="general_request" />
           <label class="choose" for="ge">General Enquity</label>
           </div>
           <!-- div2 -->
           <div>
-            <input name="query" id="sr" type="radio" value="support_request" />
+            <input aria-label="radio input support request" name="query" id="sr" type="radio" value="support_request" />
             <label class="choose" for="sr">Support Request</label>
           </div>
         </div>
         <!-- error -->
         <p>Please select a query type</p>
       </section>
-      <section class="msg">
+      <section class="msg" aria-live="polite">
         <label for="message">Message</label>
-        <textarea rows="4" name="message" id="message"></textarea>
+        <textarea aria-label="message" rows="4" name="message" id="message"></textarea>
         <!-- error -->
           <p>This field is required</p>
       </section>
-      <section id="check">
+      <section id="check" aria-live="polite">
         <div class="check">
-          <input type="checkbox" id="consent" name="consent" />
+          <input aria-label="consent checkbox" type="checkbox" id="consent" name="consent" />
           <label for="consent">I consent to being contacted by the team</label>
         </div>
         <!-- error -->
         <p>To submit this form, please consent to being contacted</p>
       </section>
-      <button type="submit">Submit</button>
+      <button aria-label="submit" type="submit">Submit</button>
     </form>
   </main>
 
